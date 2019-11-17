@@ -151,5 +151,5 @@ activity_summary <- sub_data %>%
   # Remove subject_id column as it is not necessary to the results
   select(-(subject_id))
 # Write tidy data and activity summary to a .txt file
-write.table(sub_data, "tidydataset.txt")
-write.table(activity_summary, "activity_summary.txt")
+write.table(sub_data, "tidydataset.txt", row.names = FALSE)
+write.table(activity_summary, "activity_summary.txt", row.names = FALSE)
