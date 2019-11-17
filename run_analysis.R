@@ -144,12 +144,10 @@ names(sub_data) <- gsub("BodyBody", "Body", names(sub_data))
 ## Objective 5: From step 4, create second tidy data set with the average of each variable for each activity
 # Create new data frame summary with activity_summary
 activity_summary <- sub_data %>%
-  # Group by activity using dplyr
-  group_by(activity) %>%
+  # Group by subject and activity using dplyr
+  group_by(subject_id, activity) %>%
   # Summarize_all using the mean function
-  summarize_all(mean) %>%
-  # Remove subject_id column as it is not necessary to the results
-  select(-(subject_id))
+  summarize_all(mean)
 # Write tidy data and activity summary to a .txt file
 write.table(sub_data, "tidydataset.txt", row.names = FALSE)
 write.table(activity_summary, "activity_summary.txt", row.names = FALSE)
